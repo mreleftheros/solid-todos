@@ -3,18 +3,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
 
   &-text {
     display: block;
-    font-size: 3rem;
+    font-size: 4rem;
     text-decoration: none;
-    transition: opacity .15s ease;
-    color: orange;
-    letter-spacing: .1rem;
+    transition: opacity 0.15s ease;
 
     &:hover {
-      opacity: .75;
+      opacity: 0.75;
     }
   }
 }
