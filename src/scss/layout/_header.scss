@@ -1,3 +1,8 @@
 .header {
   background-color: navy;
+
+  &-nav {
+    display: flex;
+    height: 100%;
+  }
 }
