@@ -1,6 +1,6 @@
 import { createStore } from 'solid-js/store';
 
-export const createTodoStore = () => {
+export const useTodoStore = () => {
   const [todos, setTodos] = createStore([]);
   const len = () => todos.length;
   const id = () => (len() === 0 ? 0 : Math.max(...todos.map(t => t.id)) + 1);

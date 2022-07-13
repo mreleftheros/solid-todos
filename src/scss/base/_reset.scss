@@ -11,8 +11,13 @@
 body {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+#root {
   font-size: 1.6rem;
   background-color: #333;
   color: #eee;
+  display: grid;
+  grid-template-rows: minmax(10vh, auto) 1fr minmax(5vh, auto);
   min-height: 100vh;
 }
