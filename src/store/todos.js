@@ -1,9 +1,12 @@
+import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-export const useTodoStore = () => {
+export const createTodos = () => {
   const [todos, setTodos] = createStore([]);
   const len = () => todos.length;
   const id = () => (len() === 0 ? 0 : Math.max(...todos.map(t => t.id)) + 1);
+
+  createEffect(() => console.log(todos));
 
   const addTodo = text =>
     setTodos(prev => [{ id: id(), text, done: false }, ...prev]);
@@ -17,12 +20,7 @@ export const useTodoStore = () => {
       done => !done
     );
 
-  const updateTodo = (id, text) =>
-    setTodos(
-      t => t.id === id,
-      'text',
-      text
-    );
+  const updateTodo = (id, text) => setTodos(t => t.id === id, 'text', text);
 
   return {
     todos,

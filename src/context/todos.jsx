@@ -1,15 +1,14 @@
 import { createContext, useContext } from 'solid-js';
-import { useTodoStore } from '../store/todos';
+import { createTodos } from '../store/todos';
 
 const TodoContext = createContext();
 
 const TodoProvider = props => {
-  const { todos, len, addTodo, deleteTodo, toggleTodo, updateTodo } =
-    useTodoStore();
+  const { todos, addTodo, deleteTodo, toggleTodo, updateTodo } = createTodos();
 
   return (
     <TodoContext.Provider
-      value={{ todos, len, addTodo, deleteTodo, toggleTodo, updateTodo }}
+      value={{ todos, addTodo, deleteTodo, toggleTodo, updateTodo }}
     >
       {props.children}
     </TodoContext.Provider>
