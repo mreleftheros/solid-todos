@@ -1,9 +1,16 @@
 import { batch, createSignal } from 'solid-js';
 import { useTodos } from '../context/todos';
+import { clickOut } from '../utils';
 
 const Todo = props => {
   const { toggleTodo, deleteTodo, updateTodo } = useTodos();
   const [edit, setEdit] = createSignal(null);
+  let editInput;
+
+  const startEdit = () => {
+    setEdit({ text: props.text });
+    return editInput.select();
+  };
 
   const handleKeyUp = ({ key }) => {
     if (key !== 'Enter' || !edit().text) return;
@@ -12,8 +19,6 @@ const Todo = props => {
       setEdit(null);
     });
   };
-
-  const handleClick = () => setEdit({ text: props.text });
 
   const handleInput = ({ target }) => setEdit({ text: target.value });
 
@@ -26,14 +31,16 @@ const Todo = props => {
             <input
               className='todo-edit'
               type='text'
-              value={props.text}
+              value={edit().text}
               onKeyUp={handleKeyUp}
               onInput={handleInput}
+              ref={editInput}
+              use:clickOut={() => setEdit(null)}
             />
           </>
         }
       >
-        <h3 className='todo-text' onClick={handleClick}>
+        <h3 className='todo-text' onClick={startEdit}>
           {props.text}
         </h3>
       </Show>
@@ -41,7 +48,9 @@ const Todo = props => {
         <button className='todo-tool' onClick={[toggleTodo, props.id]}>
           {props.done ? '✗' : '🗸'}
         </button>
-        <button className='todo-tool'>✎</button>
+        <button className='todo-tool' onClick={startEdit}>
+          ✎
+        </button>
         <button className='todo-tool' onClick={[deleteTodo, props.id]}>
           🗑️
         </button>
