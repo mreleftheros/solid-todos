@@ -1,4 +1,4 @@
-import { createEffect, createSignal, on } from 'solid-js';
+import { createSignal } from 'solid-js';
 import { useTodos } from '../context/todos';
 import Todo from '../lib/Todo';
 
@@ -7,8 +7,6 @@ const Profile = () => {
   const [todo, setTodo] = createSignal('');
   const len = () => todos.length;
   let todoInput;
-
-  createEffect(on(addTodo => todoInput.focus()));
 
   const handleInput = ({ target }) => setTodo(target.value);
 

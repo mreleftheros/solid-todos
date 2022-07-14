@@ -8,13 +8,26 @@
   min-height: 6rem;
 
   &-done {
-    background-color: rgba(50, 205, 50, .75);
+    background-color: rgba(50, 205, 50, 0.75);
   }
 
   &-text {
     flex: 1;
     padding-left: 0.5rem;
     font-size: 2rem;
+    cursor: pointer;
+  }
+
+  &-edit {
+    flex: 1;
+    padding-left: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    border-radius: 1rem;
+    padding: .5rem;
+    color: #fff;
+    display: block;
+    background-color: rgba(0, 255, 255, 0.1);
   }
 
   &-tools {

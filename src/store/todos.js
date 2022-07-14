@@ -17,10 +17,18 @@ export const useTodoStore = () => {
       done => !done
     );
 
+  const updateTodo = (id, text) =>
+    setTodos(
+      t => t.id === id,
+      'text',
+      text
+    );
+
   return {
     todos,
     addTodo,
     deleteTodo,
     toggleTodo,
+    updateTodo,
   };
 };
