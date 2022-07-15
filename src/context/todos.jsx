@@ -4,11 +4,11 @@ import { createTodos } from '../store/todos';
 const TodoContext = createContext();
 
 const TodoProvider = props => {
-  const { todos, addTodo, deleteTodo, toggleTodo, updateTodo } = createTodos();
+  const { todos, addTodo, deleteTodo, toggleDone, updateTodo } = createTodos();
 
   return (
     <TodoContext.Provider
-      value={{ todos, addTodo, deleteTodo, toggleTodo, updateTodo }}
+      value={{ todos, addTodo, deleteTodo, toggleDone, updateTodo }}
     >
       {props.children}
     </TodoContext.Provider>

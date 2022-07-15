@@ -3,7 +3,7 @@ import { useTodos } from '../context/todos';
 import { clickOut } from '../utils';
 
 const Todo = props => {
-  const { toggleTodo, deleteTodo, updateTodo } = useTodos();
+  const { toggleDone, deleteTodo, updateTodo } = useTodos();
   const [edit, setEdit] = createSignal(null);
   let editInput;
 
@@ -45,7 +45,7 @@ const Todo = props => {
         </h3>
       </Show>
       <div className='todo-tools'>
-        <button className='todo-tool' onClick={[toggleTodo, props.id]}>
+        <button className='todo-tool' onClick={[toggleDone, props.id]}>
           {props.done ? '✗' : '🗸'}
         </button>
         <button className='todo-tool' onClick={startEdit}>
