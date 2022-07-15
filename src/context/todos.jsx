@@ -4,7 +4,9 @@ import { createTodos } from '../store/todos';
 const TodoContext = createContext();
 
 const TodoProvider = props => {
-  const { todos, addTodo, deleteTodo, toggleDone, updateTodo } = createTodos();
+  const { todos, addTodo, deleteTodo, toggleDone, updateTodo } = createTodos(
+    []
+  );
 
   return (
     <TodoContext.Provider
